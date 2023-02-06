@@ -6,7 +6,7 @@ authors = ["martijn.v.erne@gmail.com"]
 edition = "2021"
 license = "MIT"
 repository = "https://github.com/mafferozo/aoc_input"
-
+readme = "README.md"
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
