@@ -1,7 +1,12 @@
 [package]
 name = "aoc_input"
+description = "A simple program to download and cache your AoC puzzle inputs"
 version = "0.1.0"
+authors = ["martijn.v.erne@gmail.com"]
 edition = "2021"
+license = "MIT"
+
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
@@ -11,8 +16,13 @@ path = "src/lib.rs"
 [[bin]]
 name = "aoc-input"
 path = "src/bin/aoc-input/main.rs"
+required-features = ["cli"]
+
 
 [dependencies]
-clap = { version = "4.1.4", features = ["derive"] }
+clap = { version = "4.1.4", features = ["derive"], optional = true }
 home = "0.5.4"
 reqwest = { version = "0.11.14", features = ["blocking"] }
+
+[features]
+cli = ["dep:clap"]
