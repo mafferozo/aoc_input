@@ -5,6 +5,7 @@ version = "0.1.0"
 authors = ["martijn.v.erne@gmail.com"]
 edition = "2021"
 license = "MIT"
+repository = "https://github.com/mafferozo/aoc_input"
 
 
 
