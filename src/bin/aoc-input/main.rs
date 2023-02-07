@@ -11,7 +11,7 @@ use args::Args;
 fn main()  {
     let cli = Args::parse();
 
-    let input = get_puzzle_input(cli.year,cli.day,Some(cli.session));
+    let input = get_puzzle_input(cli.year,cli.day,cli.session);
     match input {
         Ok(input) => print!("{}",input),
         Err(error) => {eprintln!("{}",error); process::exit(1)},

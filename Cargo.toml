@@ -1,7 +1,7 @@
 [package]
 name = "aoc_input"
 description = "A simple program to download and cache your AoC puzzle inputs"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["martijn.v.erne@gmail.com"]
 edition = "2021"
 license = "MIT"

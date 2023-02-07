@@ -7,9 +7,6 @@ use clap::{Parser, command};
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about)]
 pub struct Args {
-    /// Your session token
-    pub session: Option<String>,
-
     /// The year of the puzzle
     #[arg(value_parser = year_in_range)]
     pub year: u32,
@@ -17,6 +14,9 @@ pub struct Args {
     /// The day of the puzzle
     #[arg(value_parser = clap::value_parser!(u32).range(1..26))]
     pub day: u32,
+
+    /// Your session token
+    pub session: Option<String>,
 }
 
 /// TODO: get current year for `end` bound. 
