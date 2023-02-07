@@ -8,7 +8,7 @@ use clap::{Parser, command};
 #[command(author, version, about, long_about)]
 pub struct Args {
     /// Your session token
-    pub session: String,
+    pub session: Option<String>,
 
     /// The year of the puzzle
     #[arg(value_parser = year_in_range)]
@@ -19,8 +19,8 @@ pub struct Args {
     pub day: u32,
 }
 
+/// TODO: get current year for `end` bound. 
 fn year_in_range(s: &str) -> Result<u32, String> {
-    // TODO: getCurrentYear() for upper part of range
     let year_range = 2015..2024;
 
     let year: u32 = s.parse().map_err(|_| format!("`{}` isn't a year", s))?;

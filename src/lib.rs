@@ -1,12 +1,17 @@
 mod error;
 use std::{io::Write, path::PathBuf};
 
-type AocResult<T> = Result<T, error::Error>;
+use error::Error;
 
-pub fn get_puzzle_input(year: u32, day: u32, session: String) -> AocResult<String> {
-    from_cache(year, day)
-        .ok_or(())
-        .or_else(|_| from_web(year, day, session, true))
+type AocResult<T> = Result<T, Error>;
+
+pub fn get_puzzle_input(year: u32, day: u32, session: Option<String>) -> AocResult<String> {
+    match from_cache(year, day) {
+        Some(input) => Ok(input),
+        None => session
+            .ok_or(Error::SessionRequired)
+            .and_then(|session| from_web(year, day, session, true)),
+    }
 }
 
 pub fn from_web(year: u32, day: u32, session: String, should_cache: bool) -> AocResult<String> {
@@ -44,7 +49,7 @@ fn from_cache(year: u32, day: u32) -> Option<String> {
 /// Discard any errors if caching fails
 fn set_cache(year: u32, day: u32, puzzle_input: String) {
     if let Some(p) = get_path(year, day) {
-        // should not fail
+        // should not panic
         let prefix = p.parent().unwrap();
 
         _ = std::fs::create_dir_all(prefix);
