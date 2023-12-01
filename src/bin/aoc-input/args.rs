@@ -1,8 +1,8 @@
 use clap::{Parser, command};
 
 /// Simple program to download puzzle input of Advent Of Code
-/// 
-/// To reduce network traffic on adventofcode.com, 
+///
+/// To reduce network traffic on adventofcode.com,
 /// the program will try to cache the puzzles in ~/.aoc_puzzles
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about)]
@@ -19,9 +19,9 @@ pub struct Args {
     pub session: Option<String>,
 }
 
-/// TODO: get current year for `end` bound. 
+/// TODO: get current year for `end` bound.
 fn year_in_range(s: &str) -> Result<u32, String> {
-    let year_range = 2015..2024;
+    let year_range = 2015..2025;
 
     let year: u32 = s.parse().map_err(|_| format!("`{}` isn't a year", s))?;
 
